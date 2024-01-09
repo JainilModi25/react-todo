@@ -1,6 +1,7 @@
 import express from 'express';
 import mongoose from 'mongoose';
 import {createToDo, updateToDo} from '/types.js'   // object destructuring
+import { todo } from '/db.js'
 
 const app = express()
 app.use(express.json())
