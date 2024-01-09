@@ -1,15 +1,15 @@
 import zod from "zod";
 
-const createToDo = zod.object({
+export const createToDo = zod.object({
     title: zod.string(),
     description: zod.string()
 })
 
-const updateToDo = zod.object({
+export const updateToDo = zod.object({
     id: zod.string()
 })
 
-module.exports = {
-    createToDo,
-    updateToDo
-}
+// module.exports = {
+//     createToDo: createToDo,
+//     updateToDo: updateToDo
+// }
