@@ -14,7 +14,7 @@ app.get('/todos', (req, res) => {
 app.post('/todo', (req, res) => {
     
     try {
-        const payload = req.body;
+        const payload = req.body;   // title and description
         const checkPayload = createToDo.safeParse(payload)
         if (checkPayload){
             
@@ -28,12 +28,27 @@ app.post('/todo', (req, res) => {
         })
         return;
     }
-
+    
 })
 
 // update a todo and mark it as done
 app.put('/completed', (req, res) =>{
-
+    try {
+        const payload = req.body;   // id of the todo
+        const checkPayload = updateToDo.safeParse(payload)
+        if (checkPayload){
+    
+        }
+        // push it in mongodb
+        
+    } catch (error) {
+        res.status(411).json({
+            message: "Incorrect input format, try again.",
+            error: console.log(error)
+        })
+        return;
+    }
+    
 })
 
 
