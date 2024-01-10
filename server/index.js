@@ -12,11 +12,12 @@ app.use(cors())
 
 // display a list of all todos
 app.get('/todos', async (req, res) => {
-    try {const todoList = await todo.find({});
-    res.json({
-        todoList: todoList
+    try {
+        const todoList = await todo.find({});
+        res.json({
+            todoList: todoList
     })
-} catch{
+    } catch{
     res.status(404).json({
         msg: "No records found."
     })
@@ -65,6 +66,9 @@ app.put('/completed', async (req, res) =>{
                 completed: true
             })
         }
+        res.json({
+            msg: "Marked as done."
+        })
         
     } catch (error) {
         res.status(411).json({
