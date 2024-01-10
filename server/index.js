@@ -17,10 +17,11 @@ app.get('/todos', async (req, res) => {
         res.json({
             todoList: todoList
     })
-    } catch{
+    } catch (err){
     res.status(404).json({
         msg: "No records found."
     })
+    console.log(err);
 }
 
 })

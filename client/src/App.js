@@ -1,23 +1,24 @@
-import logo from './logo.svg';
 import './App.css';
+import { useState } from 'react';
+import { CreateToDo } from './components/CreateToDo';
+import { DisplayToDo } from './components/DisplayToDo';
 
 function App() {
+  const [todos, setToDos] = useState([])
+
+    fetch("http://localhost:5005/todos")
+      .then(async function(res){
+        const json = await res.json();
+        setToDos(json.todoList);
+      })
+      .catch((err) => console.error("error fetching todos: ", err))
+
+
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
+    <div>
+      hi there
+      <CreateToDo></CreateToDo>
+      <DisplayToDo todos={todos} ></DisplayToDo>
     </div>
   );
 }
